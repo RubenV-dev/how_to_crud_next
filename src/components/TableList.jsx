@@ -1,4 +1,4 @@
-export default function TableList(){
+export default function TableList({handleOpen}){
     const clients = [
         {id:1,name: "John Apple", email:"john@xyz.com", job:"Developer", rate:"100", isactive: true},
         {id:2,name: "Larry Orange", email:"larry@xyz.com", job:"Chef", rate:"200", isactive: true},
@@ -23,7 +23,7 @@ export default function TableList(){
                     <tbody className="hover:bg-base-300">
                     {/* row 1 */}
                     {clients.map(function(client){
-                        return (<tr>
+                        return (<tr key={client.id}>
                             <th>{client.id}</th>
                             <td>{client.name}</td>
                             <td>{client.job}</td>
@@ -35,7 +35,7 @@ export default function TableList(){
                                 </button>
                             </td>
                             <td>
-                                <button className="btn btn-secondary">
+                                <button className="btn btn-secondary" onClick={() => handleOpen('edit')}>
                                     Update
                                 </button>
                             </td>
